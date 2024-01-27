@@ -21,6 +21,8 @@ fetch(queryURL)
 
     console.log(queryURL)
     console.log(data)
+
+$("#today").html("<h1>" + data.city.name + "</h1>")    
 })
 
 
