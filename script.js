@@ -6,14 +6,13 @@ var APIKey = "9404079bc4b50a677177ee55266f7815"
 
 //function to fetch the current weather data when the search button is clicked
 $("#search-button").on("click", function(event) {
-
 event.preventDefault()
 
 //variable to get the text from the search box
 var city = $("#search-input").val()
 
 //URL to get the current weather data from the open weather page
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey
 
 //function to fetch the data from the api webpage
 fetch(queryURL)
@@ -21,29 +20,39 @@ fetch(queryURL)
     return response.json()
 })
 .then(function (data) {
-
     console.log(queryURL)
     console.log(data)
 
 //Displays the city name and current date
-$("#today").html("<h1>" + data.name + " (" + currentDate.format('DD/MM/YYYY') + ")" + "</h1>")
+$("#today").html("<h1>" + data.city.name + " (" + currentDate.format('DD/MM/YYYY') + ")" + "</h1>")
 
-//create div to display the temperature of the current location
-var temp = $('<div>').text("Temp: " + data.main.temp)
-//create div to display the wind speed of the current location
-var wind = $('<div>').text("Wind: " + data.wind.speed + " KPH")
-//create div to display the humidity of the current location
-var humidity = $('<div>').text("Humidity: " + data.main.humidity + "%")
+//create divs to display the temperature, wind speed and humidity of the current location
+var currentTemp = $('<p>').text("Temp: " + data.list[0].main.temp)
+var currentWind = $('<p>').text("Wind: " + data.list[0].wind.speed + " KPH")
+var currentHumidity = $('<p>').text("Humidity: " + data.list[0].main.humidity + "%")
 
 //Add the temp, wind and humidity variable to the section with id = today in the html file
-$("#today").append(temp)
-$("#today").append(wind)
-$("#today").append(humidity)
+$("#today").append(currentTemp)
+$("#today").append(currentWind)
+$("#today").append(currentHumidity)
+
+//Display the title 5-Day forecast
+$("#forecast").html("<h2>5-Day Forecast:</h2>")
+
+//create card for 5 day weather forecast
+var forecast = $('<div class= "card text-bg-secondary mb-3" style="max-width: 13rem">')
+var date = $('<h5 class="card-title">').text(data.list[1].dt_txt)
+var temp = $('<p class="card-text">').text("Temp: " + data.list[1].main.temp)
+var wind = $('<p class="card-text">').text("Wind: " + data.list[1].wind.speed + " KPH")
+var humidity = $('<p class="card-text">').text("Humidity: " + data.list[1].main.humidity + "%")
+
+$("#forecast").append(forecast)
+$(forecast).append(date)
+$(forecast).append(temp)
+$(forecast).append(wind)
+$(forecast).append(humidity)
+
+})
 })
 
 
-})
-
-
-//URL to get the data from the open weather page
-//var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey
