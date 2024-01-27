@@ -1,3 +1,6 @@
+//variable to get the current date from day.js.
+var currentDate = dayjs();
+
 // API key //
 var APIKey = "9404079bc4b50a677177ee55266f7815"
 
@@ -22,7 +25,8 @@ fetch(queryURL)
     console.log(queryURL)
     console.log(data)
 
-$("#today").html("<h1>" + data.city.name + "</h1>")    
+//Displays the city name and current date
+$("#today").html("<h1>" + data.city.name + " (" + currentDate.format('DD/MM/YYYY') + ")" + "</h1>")    
 })
 
 
