@@ -23,9 +23,11 @@ fetch(queryURL)
     console.log(queryURL)
     console.log(data)
 
+//console.log(data.list[0].weather[0].icon)
+//var icon = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png"
+    
 //Displays the city name and current date
 $("#today").html("<h1>" + data.city.name + " (" + currentDate.format('DD/MM/YYYY') + ")" + "</h1>")
-
 //Change temperature to celsius
 var tempC = data.list[0].main.temp - 273.15
 
@@ -43,9 +45,7 @@ $("#today").append(currentHumidity)
 $("#forecast").html("<h2>5-Day Forecast:</h2>")
 
 //variable to create an array for the data of the next 5 days
-var card = [data.list[1], data.list[2], data.list[3], data.list[4], data.list[5]]
-
-
+var card = [data.list[2], data.list[10], data.list[18], data.list[26], data.list[34]]
 
 //For loop to make 5 cards showing next 5 days weather forecast
 for (var i=0; i<card.length; i++) {
