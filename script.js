@@ -39,19 +39,24 @@ $("#today").append(currentHumidity)
 //Display the title 5-Day forecast
 $("#forecast").html("<h2>5-Day Forecast:</h2>")
 
+//variable to create an array for the data of the next 5 days
+var card = [data.list[1], data.list[2], data.list[3], data.list[4], data.list[5]]
+
+//For loop to make 5 cards showing next 5 days weather forecast
+for (var i=0; i<card.length; i++) {
 //create card for 5 day weather forecast
-var forecast = $('<div class= "card text-bg-secondary mb-3" style="max-width: 13rem">')
-var date = $('<h5 class="card-title">').text(data.list[1].dt_txt)
-var temp = $('<p class="card-text">').text("Temp: " + data.list[1].main.temp)
-var wind = $('<p class="card-text">').text("Wind: " + data.list[1].wind.speed + " KPH")
-var humidity = $('<p class="card-text">').text("Humidity: " + data.list[1].main.humidity + "%")
+var forecast = $('<div class= "card text-bg-secondary mb-3" style="max-width: 10rem">')
+var date = $('<h5 class="card-title">').text(card[i].dt_txt)
+var temp = $('<p class="card-text">').text("Temp: " + card[i].main.temp)
+var wind = $('<p class="card-text">').text("Wind: " + card[i].wind.speed + " KPH")
+var humidity = $('<p class="card-text">').text("Humidity: " + card[i].main.humidity + "%")
 
 $("#forecast").append(forecast)
 $(forecast).append(date)
 $(forecast).append(temp)
 $(forecast).append(wind)
 $(forecast).append(humidity)
-
+}
 })
 })
 
