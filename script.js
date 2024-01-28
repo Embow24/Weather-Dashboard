@@ -26,8 +26,11 @@ fetch(queryURL)
 //Displays the city name and current date
 $("#today").html("<h1>" + data.city.name + " (" + currentDate.format('DD/MM/YYYY') + ")" + "</h1>")
 
+//Change temperature to celsius
+var tempC = data.list[0].main.temp - 273.15
+
 //create divs to display the temperature, wind speed and humidity of the current location
-var currentTemp = $('<p>').text("Temp: " + data.list[0].main.temp)
+var currentTemp = $('<p>').text("Temp: " + tempC.toFixed(2) + " C")
 var currentWind = $('<p>').text("Wind: " + data.list[0].wind.speed + " KPH")
 var currentHumidity = $('<p>').text("Humidity: " + data.list[0].main.humidity + "%")
 
@@ -42,12 +45,17 @@ $("#forecast").html("<h2>5-Day Forecast:</h2>")
 //variable to create an array for the data of the next 5 days
 var card = [data.list[1], data.list[2], data.list[3], data.list[4], data.list[5]]
 
+
+
 //For loop to make 5 cards showing next 5 days weather forecast
 for (var i=0; i<card.length; i++) {
+//Change temperature to celsius
+var forecastTempC = card[i].main.temp - 273.15
+
 //create card for 5 day weather forecast
 var forecast = $('<div class= "card text-bg-secondary mb-3" style="max-width: 10rem">')
 var date = $('<h5 class="card-title">').text(card[i].dt_txt)
-var temp = $('<p class="card-text">').text("Temp: " + card[i].main.temp)
+var temp = $('<p class="card-text">').text("Temp: " + forecastTempC.toFixed(2) + " C")
 var wind = $('<p class="card-text">').text("Wind: " + card[i].wind.speed + " KPH")
 var humidity = $('<p class="card-text">').text("Humidity: " + card[i].main.humidity + "%")
 
