@@ -75,13 +75,14 @@ $(forecast).append(wind)
 $(forecast).append(humidity)
 }
 
-//Data saved to local storage when search button clicked
-
 //New button with city name is created when search button is clicked and data is stored in local storage
 var cityHistory = $('<button type="button" class="btn btn-secondary" id="search-history">').text(data.city.name)
 $('#history').append(cityHistory)
 
-//Show current weather and 5 days forecast data from local storage when city named button is clicked
+//Data saved to local storage when search button clicked
+
+
+//Show current weather and 5 days forecast data from local storage when city named button is clicked using if statement
 
 })
 })
