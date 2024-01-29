@@ -56,9 +56,12 @@ var forecastTempC = card[i].main.temp - 273.15
 //variable for the icons needed for the next 5 days forecast
 var forecastIcon = "https://openweathermap.org/img/wn/" + card[i].weather[0].icon + "@2x.png"
 
+//variable to change the format of the date 
+var forecastDate = dayjs(card[i].dt_txt).format('DD/MM/YYYY')
+
 //create card for 5 day weather forecast
 var forecast = $('<div class= "card text-bg-secondary mb-3" style="max-width: 10rem">')
-var date = $('<h5 class="card-title">').text(card[i].dt_txt)
+var date = $('<h5 class="card-title">').text(forecastDate)
 var icons = $("<img src=" + forecastIcon +">")
 var temp = $('<p class="card-text">').text("Temp: " + forecastTempC.toFixed(2) + " C")
 var wind = $('<p class="card-text">').text("Wind: " + card[i].wind.speed + " KPH")
