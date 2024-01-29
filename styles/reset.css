@@ -7,3 +7,8 @@ margin-bottom: 10px;
 #today {
     padding: 5px;
 }
+
+.card {
+    margin-right: 10px;
+    margin-left: 10px;
+}
