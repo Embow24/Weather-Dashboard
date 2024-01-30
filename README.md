@@ -9,12 +9,13 @@ N/A
 # Usage
 To use this webpage the user must input a city name into the search bar and click the search button. Once the button is clicked a box will appear on the right of the screen displaying the current weather conditions for the city inputted into the search bar. Below that 5 cards will also appear displaying the weather conditions for the next five days in that city. Alongside this the city name will be stored as a button below the search bar. Each time a new city is entered a button will be created and the data will be stored in the local storage. When the user clicks a button the weather data for that city will be retrieved from the local storage and redisplayed on the screen.
 
-To access the webpage click this link:
+To access the webpage click this link: https://embow24.github.io/Weather-Dashboard/ 
 
 Below is a screenshot of the weather dashboard:
 ![screenshot](images/Weather-Dashboard.png)
 
 # Credits
+Had support from a tutor to explain local storage and how to add it to my code so that the data stored and retrieved when the city named button was clicked.
 
 # License
 MIT

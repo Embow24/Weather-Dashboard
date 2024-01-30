@@ -4,13 +4,13 @@ var currentDate = dayjs();
 // API key //
 var APIKey = "9404079bc4b50a677177ee55266f7815"
 
-//
 var searchHistory = []
 
 //function to fetch the current weather data when the search button is clicked
 $("#search-button").on("click", function(event) {
 event.preventDefault()
 
+//function to add data to local storage
 function addToHistory(search) {
     if(searchHistory.indexOf(search) !== -1) {
         return;
@@ -23,7 +23,6 @@ historyList()
 //variable to get the text from the search box
 var city = $("#search-input").val()
 addToHistory(city)
-console.log(searchHistory)
 
 //URL to get the current weather data from the open weather page
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey
@@ -88,7 +87,6 @@ $(forecast).append(temp)
 $(forecast).append(wind)
 $(forecast).append(humidity)
 }
-
 })
 })
 
